@@ -17,7 +17,7 @@ namespace eShop.Providers
         {
             if (!File.Exists(base.FilePath) || Version != CURRENT_VERSION)
             {
-                string json = Resources.LoadString("CatalogDb.CatalogDb.json");
+                var json = Resources.LoadString("CatalogDb.CatalogDb.json");
                 Deserialize(json);
                 Version = CURRENT_VERSION;
                 SaveChanges();

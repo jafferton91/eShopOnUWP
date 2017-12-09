@@ -42,7 +42,7 @@ namespace eShop.UWP
             {
                 using (var stream = randomStream.AsStream())
                 {
-                    byte[] buffer = new byte[randomStream.Size];
+                    var buffer = new byte[randomStream.Size];
                     await stream.ReadAsync(buffer, 0, buffer.Length);
                     return buffer;
                 }
@@ -52,7 +52,7 @@ namespace eShop.UWP
         static private async Task<string> GetImageUriAsync(StorageFile file)
         {
             var folder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("Images", CreationCollisionOption.OpenIfExists);
-            string tempFileName = $"{DateTime.UtcNow.Ticks}{file.FileType}";
+            var tempFileName = $"{DateTime.UtcNow.Ticks}{file.FileType}";
             var destinationFile = await file.CopyAsync(folder, tempFileName);
             return $"ms-appdata:///local/images/{destinationFile.Name}";
         }

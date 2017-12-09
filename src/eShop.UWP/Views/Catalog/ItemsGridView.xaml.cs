@@ -37,7 +37,7 @@ namespace eShop.UWP.Views
             var animation = ConnectedAnimationService.GetForCurrentView().GetAnimation("ItemSelectedBack");
             if (animation != null)
             {
-                int id = ViewModel.State.SelectedItemId;
+                var id = ViewModel.State.SelectedItemId;
                 if (id > 0)
                 {
                     if (ViewModel.Items != null)

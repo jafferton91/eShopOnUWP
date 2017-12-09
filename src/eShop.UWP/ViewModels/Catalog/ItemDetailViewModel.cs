@@ -29,15 +29,15 @@ namespace eShop.UWP.ViewModels
         private IList<CatalogTypeModel> _catalogTypes = null;
         public IList<CatalogTypeModel> CatalogTypes
         {
-            get { return _catalogTypes; }
-            set { Set(ref _catalogTypes, value); }
+            get => _catalogTypes;
+            set => Set(ref _catalogTypes, value);
         }
 
         private IList<CatalogBrandModel> _catalogBrands = null;
         public IList<CatalogBrandModel> CatalogBrands
         {
-            get { return _catalogBrands; }
-            set { Set(ref _catalogBrands, value); }
+            get => _catalogBrands;
+            set => Set(ref _catalogBrands, value);
         }
 
         public override bool AlwaysShowHeader => false;
@@ -45,29 +45,29 @@ namespace eShop.UWP.ViewModels
         private CatalogItemModel _item;
         public CatalogItemModel Item
         {
-            get { return _item; }
-            set { Set(ref _item, value); }
+            get => _item;
+            set => Set(ref _item, value);
         }
 
         private ObservableCollection<CatalogItemModel> _relatedItems = null;
         public ObservableCollection<CatalogItemModel> RelatedItems
         {
-            get { return _relatedItems; }
-            set { Set(ref _relatedItems, value); }
+            get => _relatedItems;
+            set => Set(ref _relatedItems, value);
         }
 
         private bool _isUnavailable;
         public bool IsUnavailable
         {
-            get { return _isUnavailable; }
-            set { Set(ref _isUnavailable, value); }
+            get => _isUnavailable;
+            set => Set(ref _isUnavailable, value);
         }
 
         private bool _isCommandBarOpen = false;
         public bool IsCommandBarOpen
         {
-            get { return _isCommandBarOpen; }
-            set { Set(ref _isCommandBarOpen, value); }
+            get => _isCommandBarOpen;
+            set => Set(ref _isCommandBarOpen, value);
         }
 
         public bool IsSaveVisible => true;
@@ -86,7 +86,7 @@ namespace eShop.UWP.ViewModels
             {
                 try
                 {
-                    bool isNew = Item.Id == 0;
+                    var isNew = Item.Id == 0;
                     Item.Commit();
                     await DataProvider.SaveItemAsync(Item);
                     NavigationService.GoBack();
@@ -163,7 +163,7 @@ namespace eShop.UWP.ViewModels
             CatalogTypes = await DataProvider.GetCatalogTypesAsync();
             CatalogBrands = await DataProvider.GetCatalogBrandsAsync();
 
-            int typeId = 0;
+            var typeId = 0;
 
             if (state.Item != null)
             {

@@ -55,10 +55,7 @@ namespace eShop.UWP.Services
         public HttpClient HttpClient { get; private set; }
         public Uri BaseAddress { get; set; }
 
-        public HttpRequestHeaders DefaultRequestHeaders
-        {
-            get => HttpClient.DefaultRequestHeaders;
-        }
+        public HttpRequestHeaders DefaultRequestHeaders => HttpClient.DefaultRequestHeaders;
 
         #region Authorization
         public AuthenticationHeaderValue Authorization
@@ -99,7 +96,7 @@ namespace eShop.UWP.Services
         // GET
         public async Task<TResult> GetAsync<TResult>(string path, params QueryParam[] parameters)
         {
-            string json = await GetAsync(path, parameters);
+            var json = await GetAsync(path, parameters);
             return JsonConvert.DeserializeObject<TResult>(json);
         }
 
@@ -111,13 +108,13 @@ namespace eShop.UWP.Services
         // POST
         public async Task<TResult> PostAsync<TResult>(string path, object value, params QueryParam[] parameters)
         {
-            string json = JsonConvert.SerializeObject(value, JsonSerializerSettings);
+            var json = JsonConvert.SerializeObject(value, JsonSerializerSettings);
             return await PostAsync<TResult>(path, json, parameters);
         }
 
         public async Task<TResult> PostAsync<TResult>(string path, string content = null, params QueryParam[] parameters)
         {
-            string json = await PostAsync(path, content, parameters);
+            var json = await PostAsync(path, content, parameters);
             return JsonConvert.DeserializeObject<TResult>(json);
         }
 
@@ -134,13 +131,13 @@ namespace eShop.UWP.Services
         // PUT
         public async Task<TResult> PutAsync<TResult>(string path, object value, params QueryParam[] parameters)
         {
-            string json = JsonConvert.SerializeObject(value, JsonSerializerSettings);
+            var json = JsonConvert.SerializeObject(value, JsonSerializerSettings);
             return await PutAsync<TResult>(path, json, parameters);
         }
 
         public async Task<TResult> PutAsync<TResult>(string path, string content = null, params QueryParam[] parameters)
         {
-            string json = await PutAsync(path, content, parameters);
+            var json = await PutAsync(path, content, parameters);
             return JsonConvert.DeserializeObject<TResult>(json);
         }
 
@@ -157,7 +154,7 @@ namespace eShop.UWP.Services
         // DELETE
         public async Task<TResult> DeleteAsync<TResult>(string path, params QueryParam[] parameters)
         {
-            string json = await DeleteAsync(path, parameters);
+            var json = await DeleteAsync(path, parameters);
             return JsonConvert.DeserializeObject<TResult>(json);
         }
 
@@ -168,7 +165,7 @@ namespace eShop.UWP.Services
 
         public async Task<string> SendRequestAsync(string path, HttpMethod method, string content = null, params QueryParam[] parameters)
         {
-            string requestUri = BuildRequestUri(path, parameters);
+            var requestUri = BuildRequestUri(path, parameters);
 
             using (var message = new HttpRequestMessage(method, requestUri))
             {
@@ -195,7 +192,7 @@ namespace eShop.UWP.Services
 
         public async Task<string> SendRequestStreamAsync(string path, HttpMethod method, Stream content, string contentType, QueryParam[] parameters)
         {
-            string requestUri = BuildRequestUri(path, parameters);
+            var requestUri = BuildRequestUri(path, parameters);
 
             using (var message = new HttpRequestMessage(method, requestUri))
             {
@@ -221,13 +218,13 @@ namespace eShop.UWP.Services
             {
                 return response;
             }
-            string responseContent = await response.Content.ReadAsStringAsync();
+            var responseContent = await response.Content.ReadAsStringAsync();
             throw new HttpRequestException($"{(int)response.StatusCode} {response.StatusCode}: {responseContent}");
         }
 
         private static string BuildRequestUri(string path, QueryParam[] parameters)
         {
-            string queryString = String.Join("&", parameters.Select(r => r));
+            var queryString = String.Join("&", parameters.Select(r => r));
             return String.IsNullOrEmpty(queryString) ? path : $"{path}?{queryString}";
         }
 

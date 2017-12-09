@@ -16,19 +16,19 @@ namespace eShop.WPF
 
         public bool FileExsits(string fileName)
         {
-            string path = Path.Combine(Folder, fileName);
+            var path = Path.Combine(Folder, fileName);
             return File.Exists(path);
         }
 
         public byte[] ReadBytes(string fileName)
         {
-            string path = Path.Combine(Folder, fileName);
+            var path = Path.Combine(Folder, fileName);
             return File.ReadAllBytes(path);
         }
 
         public string WriteBytes(string fileName, byte[] bytes)
         {
-            string path = Path.Combine(Folder, fileName);
+            var path = Path.Combine(Folder, fileName);
             File.WriteAllBytes(path, bytes);
             return path;
         }

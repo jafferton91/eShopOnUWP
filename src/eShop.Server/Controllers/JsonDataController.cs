@@ -9,7 +9,7 @@ namespace eShop.Server.Controllers
     {
         public IActionResult Index()
         {
-            string json = System.IO.File.ReadAllText("_Db\\Catalog.json");
+            var json = System.IO.File.ReadAllText("_Db\\Catalog.json");
             return Content(json);
         }
     }

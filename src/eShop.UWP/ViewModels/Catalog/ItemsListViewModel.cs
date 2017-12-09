@@ -43,29 +43,29 @@ namespace eShop.UWP.ViewModels
         private ObservableCollection<CatalogItemModel> _items = null;
         public ObservableCollection<CatalogItemModel> Items
         {
-            get { return _items; }
-            set { Set(ref _items, value); }
+            get => _items;
+            set => Set(ref _items, value);
         }
 
         private IList<CatalogTypeModel> _catalogTypes = null;
         public IList<CatalogTypeModel> CatalogTypes
         {
-            get { return _catalogTypes; }
-            set { Set(ref _catalogTypes, value); }
+            get => _catalogTypes;
+            set => Set(ref _catalogTypes, value);
         }
 
         private IList<CatalogBrandModel> _catalogBrands = null;
         public IList<CatalogBrandModel> CatalogBrands
         {
-            get { return _catalogBrands; }
-            set { Set(ref _catalogBrands, value); }
+            get => _catalogBrands;
+            set => Set(ref _catalogBrands, value);
         }
 
         private bool _isCommandBarOpen = false;
         public bool IsCommandBarOpen
         {
-            get { return _isCommandBarOpen; }
-            set { Set(ref _isCommandBarOpen, value); }
+            get => _isCommandBarOpen;
+            set => Set(ref _isCommandBarOpen, value);
         }
 
         public bool IsSelectAllVisible => Mode != ListCommandBarMode.AllSelected;
@@ -107,7 +107,7 @@ namespace eShop.UWP.ViewModels
                 ApplySelection(args.AddedItems, true);
                 ApplySelection(args.RemovedItems, false);
 
-                int count = Items.Count(r => r.IsSelected);
+                var count = Items.Count(r => r.IsSelected);
                 if (count == 0)
                 {
                     IsCommandBarOpen = false;

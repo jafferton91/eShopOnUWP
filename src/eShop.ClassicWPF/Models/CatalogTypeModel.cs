@@ -24,8 +24,8 @@ namespace eShop.Models
         #region Name
         public string Name
         {
-            get { return (string)GetValue(NameProperty); }
-            set { SetValue(NameProperty, value); }
+            get => (string)GetValue(NameProperty);
+            set => SetValue(NameProperty, value);
         }
 
         public static readonly DependencyProperty NameProperty = DependencyProperty.Register("Name", typeof(string), typeof(CatalogTypeModel), new PropertyMetadata(null));

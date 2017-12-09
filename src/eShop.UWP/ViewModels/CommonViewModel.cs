@@ -21,8 +21,8 @@ namespace eShop.UWP.ViewModels
         private string _headerText;
         public string HeaderText
         {
-            get { return _headerText; }
-            set { Set(ref _headerText, value); }
+            get => _headerText;
+            set => Set(ref _headerText, value);
         }
     }
 }

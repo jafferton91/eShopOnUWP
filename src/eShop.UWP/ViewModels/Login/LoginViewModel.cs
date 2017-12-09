@@ -28,36 +28,36 @@ namespace eShop.UWP.ViewModels
         private bool _isBusy = false;
         public bool IsBusy
         {
-            get { return _isBusy; }
-            set { Set(ref _isBusy, value); }
+            get => _isBusy;
+            set => Set(ref _isBusy, value);
         }
 
         private bool _isLoginWithPassword = false;
         public bool IsLoginWithPassword
         {
-            get { return _isLoginWithPassword; }
-            set { Set(ref _isLoginWithPassword, value); }
+            get => _isLoginWithPassword;
+            set => Set(ref _isLoginWithPassword, value);
         }
 
         private bool _isLoginWithWindowsHello = false;
         public bool IsLoginWithWindowsHello
         {
-            get { return _isLoginWithWindowsHello; }
-            set { Set(ref _isLoginWithWindowsHello, value); }
+            get => _isLoginWithWindowsHello;
+            set => Set(ref _isLoginWithWindowsHello, value);
         }
 
         private string _userName;
         public string UserName
         {
-            get { return _userName; }
-            set { Set(ref _userName, value); }
+            get => _userName;
+            set => Set(ref _userName, value);
         }
 
         private string _password = "UserPassword";
         public string Password
         {
-            get { return _password; }
-            set { Set(ref _password, value); }
+            get => _password;
+            set => Set(ref _password, value);
         }
 
         public string VersionPackage => string.Format(Constants.AuthenticationVersionCustomKey.GetLocalized(), AppSettings.Current.Version);
@@ -174,7 +174,7 @@ namespace eShop.UWP.ViewModels
 
         private async Task<Result> SignInWithWindowsHelloAsync()
         {
-            string userName = AppSettings.Current.UserName;
+            var userName = AppSettings.Current.UserName;
             if (IsWindowsHelloEnabled(userName))
             {
                 var retrieveResult = await KeyCredentialManager.OpenAsync(userName);

@@ -76,7 +76,7 @@ namespace eShop.Providers
         {
             foreach (var item in catalogItems.OrderBy(r => r.Id))
             {
-                string pictureName = $"{item.Id}.jpg";
+                var pictureName = $"{item.Id}.jpg";
                 provider.InsertCatalogItem(item.Id, item.Name, item.Description, pictureName, item.Price, item.CatalogTypeId, item.CatalogBrandId, item.IsDisabled);
                 var picture = await LoadImageAsync(pictureName);
                 provider.InsertCatalogImage(item.Id, picture);
@@ -85,7 +85,7 @@ namespace eShop.Providers
 
         static private async Task<byte[]> LoadImageAsync(string name)
         {
-            string url = $"ms-appx:///Assets/Catalog/{name}";
+            var url = $"ms-appx:///Assets/Catalog/{name}";
             var storageFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri(url, UriKind.Absolute));
             using (var randomStream = await storageFile.OpenReadAsync())
             {

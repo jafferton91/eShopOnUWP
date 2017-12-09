@@ -26,7 +26,7 @@ namespace eShop.UWP.Services
 
         protected override async Task<ActivationState> HandleInternalAsync(ToastNotificationActivatedEventArgs args)
         {
-            if (Int32.TryParse(args.Argument, out int id))
+            if (Int32.TryParse(args.Argument, out var id))
             {
                 var provider = new CatalogProvider();
                 var item = await provider.GetItemByIdAsync(id);

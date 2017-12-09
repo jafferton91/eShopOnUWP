@@ -72,7 +72,7 @@ namespace eShop.Providers
 
         public async Task<IList<CatalogItemModel>> GetItemsAsync(int typeId, int brandId, string query)
         {
-            string path = $"api/v1/catalog/items/type/{typeId}/brand/{brandId}";
+            var path = $"api/v1/catalog/items/type/{typeId}/brand/{brandId}";
 
             using (var cli = new WebApiClient(BaseAddressUri))
             {
@@ -162,9 +162,6 @@ namespace eShop.Providers
             }
         }
 
-        static public string BaseAddressUri
-        {
-            get { return AppSettings.Current.ServiceUrl; }
-        }
+        static public string BaseAddressUri => AppSettings.Current.ServiceUrl;
     }
 }

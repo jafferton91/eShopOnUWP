@@ -28,42 +28,42 @@ namespace eShop.UWP.ViewModels
         private IList<CatalogTypeModel> _catalogTypes;
         public IList<CatalogTypeModel> CatalogTypes
         {
-            get { return _catalogTypes; }
-            set { Set(ref _catalogTypes, value); }
+            get => _catalogTypes;
+            set => Set(ref _catalogTypes, value);
         }
 
         private IList<CatalogBrandModel> _catalogBrands;
         public IList<CatalogBrandModel> CatalogBrands
         {
-            get { return _catalogBrands; }
-            set { Set(ref _catalogBrands, value); }
+            get => _catalogBrands;
+            set => Set(ref _catalogBrands, value);
         }
 
         private int _filterTypeId = 0;
         public int FilterTypeId
         {
-            get { return _filterTypeId; }
+            get => _filterTypeId;
             set { Set(ref _filterTypeId, value); RefreshItems(); }
         }
 
         private int _filterBrandId = 0;
         public int FilterBrandId
         {
-            get { return _filterBrandId; }
+            get => _filterBrandId;
             set { Set(ref _filterBrandId, value); RefreshItems(); }
         }
 
         private bool _isGridChecked = false;
         public bool IsGridChecked
         {
-            get { return _isGridChecked; }
+            get => _isGridChecked;
             set { Set(ref _isGridChecked, value); ViewSelectionChanged(); }
         }
 
         private bool _isListChecked = false;
         public bool IsListChecked
         {
-            get { return _isListChecked; }
+            get => _isListChecked;
             set { Set(ref _isListChecked, value); ViewSelectionChanged(); }
         }
 

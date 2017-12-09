@@ -20,8 +20,8 @@ namespace eShop.WPF
         #region Items
         public ObservableCollection<CatalogItemModel> Items
         {
-            get { return (ObservableCollection<CatalogItemModel>)GetValue(ItemsProperty); }
-            set { SetValue(ItemsProperty, value); }
+            get => (ObservableCollection<CatalogItemModel>)GetValue(ItemsProperty);
+            set => SetValue(ItemsProperty, value);
         }
 
         public static readonly DependencyProperty ItemsProperty = DependencyProperty.Register("Items", typeof(ObservableCollection<CatalogItemModel>), typeof(MainWindow), new PropertyMetadata(null));
@@ -30,8 +30,8 @@ namespace eShop.WPF
         #region Types
         public ObservableCollection<CatalogTypeModel> Types
         {
-            get { return (ObservableCollection<CatalogTypeModel>)GetValue(TypesProperty); }
-            set { SetValue(TypesProperty, value); }
+            get => (ObservableCollection<CatalogTypeModel>)GetValue(TypesProperty);
+            set => SetValue(TypesProperty, value);
         }
 
         public static readonly DependencyProperty TypesProperty = DependencyProperty.Register("Types", typeof(ObservableCollection<CatalogTypeModel>), typeof(MainWindow), new PropertyMetadata(null));
@@ -40,8 +40,8 @@ namespace eShop.WPF
         #region Brands
         public ObservableCollection<CatalogBrandModel> Brands
         {
-            get { return (ObservableCollection<CatalogBrandModel>)GetValue(BrandsProperty); }
-            set { SetValue(BrandsProperty, value); }
+            get => (ObservableCollection<CatalogBrandModel>)GetValue(BrandsProperty);
+            set => SetValue(BrandsProperty, value);
         }
 
         public static readonly DependencyProperty BrandsProperty = DependencyProperty.Register("Brands", typeof(ObservableCollection<CatalogBrandModel>), typeof(MainWindow), new PropertyMetadata(null));
@@ -50,8 +50,8 @@ namespace eShop.WPF
         #region Query
         public string Query
         {
-            get { return (string)GetValue(QueryProperty); }
-            set { SetValue(QueryProperty, value); }
+            get => (string)GetValue(QueryProperty);
+            set => SetValue(QueryProperty, value);
         }
 
         public static readonly DependencyProperty QueryProperty = DependencyProperty.Register("Query", typeof(string), typeof(MainWindow), new PropertyMetadata(null));
@@ -60,16 +60,16 @@ namespace eShop.WPF
         #region SelectedTypeId/SelectedBrandId
         public int SelectedTypeId
         {
-            get { return (int)GetValue(SelectedTypeIdProperty); }
-            set { SetValue(SelectedTypeIdProperty, value); }
+            get => (int)GetValue(SelectedTypeIdProperty);
+            set => SetValue(SelectedTypeIdProperty, value);
         }
 
         public static readonly DependencyProperty SelectedTypeIdProperty = DependencyProperty.Register("SelectedTypeId", typeof(int), typeof(MainWindow), new PropertyMetadata(-1, OnFilterChanged));
 
         public int SelectedBrandId
         {
-            get { return (int)GetValue(SelectedBrandProperty); }
-            set { SetValue(SelectedBrandProperty, value); }
+            get => (int)GetValue(SelectedBrandProperty);
+            set => SetValue(SelectedBrandProperty, value);
         }
 
         public static readonly DependencyProperty SelectedBrandProperty = DependencyProperty.Register("SelectedBrandId", typeof(int), typeof(MainWindow), new PropertyMetadata(-1, OnFilterChanged));

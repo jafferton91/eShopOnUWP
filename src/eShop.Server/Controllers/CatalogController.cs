@@ -54,7 +54,7 @@ namespace eShop.Server.Controllers
         {
             using (var db = new CatalogDb())
             {
-                long totalItems = db.CatalogItems.LongCount();
+                var totalItems = db.CatalogItems.LongCount();
 
                 var itemsOnPage = db.CatalogItems.OrderBy(c => c.Name).Skip(pageSize * pageIndex).Take(pageSize).ToList();
                 itemsOnPage = ChangeUriPlaceholder(itemsOnPage);
@@ -72,7 +72,7 @@ namespace eShop.Server.Controllers
         {
             using (var db = new CatalogDb())
             {
-                long totalItems = db.CatalogItems.Where(c => c.Name.StartsWith(name)).LongCount();
+                var totalItems = db.CatalogItems.Where(c => c.Name.StartsWith(name)).LongCount();
 
                 var itemsOnPage = db.CatalogItems.Where(c => c.Name.StartsWith(name)).Skip(pageSize * pageIndex).Take(pageSize).OrderBy(c => c.Name).ToList();
                 itemsOnPage = ChangeUriPlaceholder(itemsOnPage);
@@ -102,7 +102,7 @@ namespace eShop.Server.Controllers
                     items = items.Where(r => r.CatalogBrandId == catalogBrandId);
                 }
 
-                long totalItems = items.LongCount();
+                var totalItems = items.LongCount();
                 var itemsOnPage = items.Skip(pageSize * pageIndex).Take(pageSize).OrderBy(c => c.Name).ToList();
                 itemsOnPage = ChangeUriPlaceholder(itemsOnPage);
 

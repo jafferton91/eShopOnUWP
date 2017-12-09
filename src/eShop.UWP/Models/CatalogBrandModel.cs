@@ -24,8 +24,8 @@ namespace eShop.UWP.Models
         private string _name;
         public string Name
         {
-            get { return _name; }
-            set { Set(ref _name, value); }
+            get => _name;
+            set => Set(ref _name, value);
         }
 
         public override int GetHashCode()

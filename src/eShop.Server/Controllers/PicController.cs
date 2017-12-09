@@ -34,14 +34,14 @@ namespace eShop.Server.Controllers
                     return NotFound(new { Message = $"Item with id {catalogItemId} not found." });
                 }
 
-                string rootPath = _hostingEnvironment.WebRootPath ?? "wwwroot";
-                string imagePath = Path.Combine(rootPath, "Images");
+                var rootPath = _hostingEnvironment.WebRootPath ?? "wwwroot";
+                var imagePath = Path.Combine(rootPath, "Images");
 
                 // Create if no exists
                 Directory.CreateDirectory(imagePath);
 
-                string extension = GetExtensionFromContentType(Request.ContentType);
-                string fileName = Path.Combine(imagePath, $"{catalogItemId}{extension}");
+                var extension = GetExtensionFromContentType(Request.ContentType);
+                var fileName = Path.Combine(imagePath, $"{catalogItemId}{extension}");
 
                 using (var stream = new FileStream(fileName, FileMode.Create))
                 {

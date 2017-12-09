@@ -90,7 +90,7 @@ namespace eShop.Cortana
             }
             else
             {
-                int cont = 1;
+                var cont = 1;
 
                 foreach (var item in items.Take(10))
                 {

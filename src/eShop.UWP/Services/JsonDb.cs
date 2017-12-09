@@ -50,7 +50,7 @@ namespace eShop.UWP.Services
 
         private void Serialize()
         {
-            string json = JsonConvert.SerializeObject(this, Formatting);
+            var json = JsonConvert.SerializeObject(this, Formatting);
             lock (_sync)
             {
                 File.WriteAllText(FilePath, json);
@@ -81,7 +81,7 @@ namespace eShop.UWP.Services
                 var properties = this.GetType().GetTypeInfo().DeclaredProperties;
                 foreach (var property in properties)
                 {
-                    if (jObject.TryGetValue(property.Name, out JToken token))
+                    if (jObject.TryGetValue(property.Name, out var token))
                     {
                         var value = token.ToObject(property.PropertyType);
                         property.SetValue(this, value);

@@ -24,15 +24,15 @@ namespace eShop.UWP.Models
         private string _name;
         public string Name
         {
-            get { return _name; }
-            set { Set(ref _name, value); }
+            get => _name;
+            set => Set(ref _name, value);
         }
 
         public string ImageUrl
         {
             get
             {
-                int id = Id <= 4 ? Id : 0;
+                var id = Id <= 4 ? Id : 0;
                 return $"ms-appx:///Assets/CatalogTypes/CatalogType{id}.jpg";
             }
         }

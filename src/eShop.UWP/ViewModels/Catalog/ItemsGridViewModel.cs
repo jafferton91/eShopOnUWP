@@ -48,28 +48,25 @@ namespace eShop.UWP.ViewModels
         private ObservableCollection<CatalogItemModel> _items = null;
         public ObservableCollection<CatalogItemModel> Items
         {
-            get { return _items; }
-            set { Set(ref _items, value); }
+            get => _items;
+            set => Set(ref _items, value);
         }
 
         private ObservableCollection<CatalogItemModel> _barItems = null;
-        public ObservableCollection<CatalogItemModel> BarItems
-        {
-            get { return _barItems; }
-        }
+        public ObservableCollection<CatalogItemModel> BarItems => _barItems;
 
         private ListViewSelectionMode _selectionMode = ListViewSelectionMode.None;
         public ListViewSelectionMode SelectionMode
         {
-            get { return _selectionMode; }
-            set { Set(ref _selectionMode, value); }
+            get => _selectionMode;
+            set => Set(ref _selectionMode, value);
         }
 
         private bool _isCommandBarOpen = false;
         public bool IsCommandBarOpen
         {
-            get { return _isCommandBarOpen; }
-            set { Set(ref _isCommandBarOpen, value); }
+            get => _isCommandBarOpen;
+            set => Set(ref _isCommandBarOpen, value);
         }
 
         public bool IsMultiSelectVisible => Mode == GridCommandBarMode.Idle;
@@ -105,7 +102,7 @@ namespace eShop.UWP.ViewModels
                     BarItems.Add(item);
                 }
 
-                int selectedCount = Items.Count(r => r.IsSelected);
+                var selectedCount = Items.Count(r => r.IsSelected);
                 if (selectedCount > 0)
                 {
                     // Set SelectionMode = Multiple before selecting items
@@ -249,7 +246,7 @@ namespace eShop.UWP.ViewModels
 
         public void UpdateCommandBar()
         {
-            int count = Items.Count(r => r.IsSelected);
+            var count = Items.Count(r => r.IsSelected);
             if (count > 0)
             {
                 if (count < Items.Count)

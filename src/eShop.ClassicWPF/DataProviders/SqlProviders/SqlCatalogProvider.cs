@@ -123,7 +123,7 @@ namespace eShop.Providers
 
             if (model.Picture != null)
             {
-                string extension = ContentTypes.GetExtensionFromContentType(model.PictureContentType);
+                var extension = ContentTypes.GetExtensionFromContentType(model.PictureContentType);
                 item.PictureFileName = $"{DateTime.UtcNow.Ticks}{extension}";
             }
 

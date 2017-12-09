@@ -14,17 +14,17 @@ namespace eShop.SqlProvider
 
         public bool DatabaseExists()
         {
-            SqlConnectionStringBuilder cnnStringBuilder = new SqlConnectionStringBuilder(ConnectionString);
-            string dbName = cnnStringBuilder.InitialCatalog;
+            var cnnStringBuilder = new SqlConnectionStringBuilder(ConnectionString);
+            var dbName = cnnStringBuilder.InitialCatalog;
             cnnStringBuilder.InitialCatalog = "master";
-            string masterConnectionString = cnnStringBuilder.ConnectionString;
+            var masterConnectionString = cnnStringBuilder.ConnectionString;
 
-            using (SqlConnection cnn = new SqlConnection(masterConnectionString))
+            using (var cnn = new SqlConnection(masterConnectionString))
             {
                 cnn.Open();
-                using (SqlCommand cmd = new SqlCommand(QUERY_EXISTSDB, cnn))
+                using (var cmd = new SqlCommand(QUERY_EXISTSDB, cnn))
                 {
-                    SqlParameter param = new SqlParameter("DbName", dbName);
+                    var param = new SqlParameter("DbName", dbName);
                     cmd.Parameters.Add(param);
                     return (int)cmd.ExecuteScalar() == 1;
                 }
@@ -40,10 +40,10 @@ namespace eShop.SqlProvider
         {
             try
             {
-                using (SqlConnection cnn = new SqlConnection(ConnectionString))
+                using (var cnn = new SqlConnection(ConnectionString))
                 {
                     cnn.Open();
-                    using (SqlCommand cmd = new SqlCommand(QUERY_VERSION, cnn))
+                    using (var cmd = new SqlCommand(QUERY_VERSION, cnn))
                     {
                         return cmd.ExecuteScalar() as String;
                     }
@@ -57,8 +57,8 @@ namespace eShop.SqlProvider
 
         public void CreateDatabase()
         {
-            SqlConnectionStringBuilder cnnStringBuilder = new SqlConnectionStringBuilder(ConnectionString);
-            string dbName = cnnStringBuilder.InitialCatalog;
+            var cnnStringBuilder = new SqlConnectionStringBuilder(ConnectionString);
+            var dbName = cnnStringBuilder.InitialCatalog;
             if (dbName == null)
             {
                 throw new ArgumentNullException("Initial Catalog");
@@ -68,20 +68,20 @@ namespace eShop.SqlProvider
                 throw new ArgumentException("Invalid Initial Catalog 'master'.");
             }
             cnnStringBuilder.InitialCatalog = "master";
-            string masterConnectionString = cnnStringBuilder.ConnectionString;
+            var masterConnectionString = cnnStringBuilder.ConnectionString;
 
-            using (SqlConnection cnn = new SqlConnection(masterConnectionString))
+            using (var cnn = new SqlConnection(masterConnectionString))
             {
                 cnn.Open();
-                foreach (string sqlLine in GetSqlScriptLines(dbName))
+                foreach (var sqlLine in GetSqlScriptLines(dbName))
                 {
-                    using (SqlCommand cmd = new SqlCommand(sqlLine, cnn))
+                    using (var cmd = new SqlCommand(sqlLine, cnn))
                     {
                         cmd.ExecuteNonQuery();
                     }
                 }
 
-                using (SqlCommand cmd = new SqlCommand($"INSERT INTO [Version] ([Current]) VALUES ('{CurrentVersion}')", cnn))
+                using (var cmd = new SqlCommand($"INSERT INTO [Version] ([Current]) VALUES ('{CurrentVersion}')", cnn))
                 {
                     cmd.ExecuteNonQuery();
                 }
@@ -90,12 +90,12 @@ namespace eShop.SqlProvider
 
         private IEnumerable<string> GetSqlScriptLines(string dbName)
         {
-            string sqlScript = GetSqlScript();
+            var sqlScript = GetSqlScript();
             sqlScript = sqlScript.Replace("[DATABASE_NAME]", dbName);
             using (var reader = new StringReader(sqlScript))
             {
-                string sql = "";
-                string line = reader.ReadLine();
+                var sql = "";
+                var line = reader.ReadLine();
                 while (line != null)
                 {
                     if (line.Trim() == "GO")
@@ -114,8 +114,8 @@ namespace eShop.SqlProvider
 
         private string GetSqlScript()
         {
-            Stream stream = System.Reflection.Assembly.GetCallingAssembly().GetManifestResourceStream("eShop.SqlProvider.SqlScripts.CreateDb.sql");
-            using (StreamReader reader = new StreamReader(stream))
+            var stream = System.Reflection.Assembly.GetCallingAssembly().GetManifestResourceStream("eShop.SqlProvider.SqlScripts.CreateDb.sql");
+            using (var reader = new StreamReader(stream))
             {
                 return reader.ReadToEnd();
             }

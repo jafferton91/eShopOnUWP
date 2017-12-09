@@ -13,8 +13,8 @@ namespace eShop.UWP.Controls
         #region BlurAmount
         public double BlurAmount
         {
-            get { return (double)GetValue(BlurAmountProperty); }
-            set { SetValue(BlurAmountProperty, value); }
+            get => (double)GetValue(BlurAmountProperty);
+            set => SetValue(BlurAmountProperty, value);
         }
 
         private static void BlurAmountChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -29,8 +29,8 @@ namespace eShop.UWP.Controls
         #region BlurAmountExpression
         public ExpressionAnimation BlurAmountExpression
         {
-            get { return (ExpressionAnimation)GetValue(BlurAmountExpressionProperty); }
-            set { SetValue(BlurAmountExpressionProperty, value); }
+            get => (ExpressionAnimation)GetValue(BlurAmountExpressionProperty);
+            set => SetValue(BlurAmountExpressionProperty, value);
         }
 
         private static void BlurAmountExpressionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

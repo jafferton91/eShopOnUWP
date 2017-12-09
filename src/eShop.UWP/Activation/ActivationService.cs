@@ -40,7 +40,7 @@ namespace eShop.UWP.Activation
 
         public async Task ActivateAsync(IActivatedEventArgs activationArgs)
         {
-            bool isLaunch = false;
+            var isLaunch = false;
             if (IsInteractive(activationArgs))
             {
                 // Retrieve current user if available

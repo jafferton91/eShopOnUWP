@@ -38,8 +38,8 @@ namespace eShop.UWP.ViewModels
         private ObservableCollection<NavigationItemModel> _menuItems;
         public ObservableCollection<NavigationItemModel> MenuItems
         {
-            get { return _menuItems ?? (_menuItems = new ObservableCollection<NavigationItemModel>(GetMenuItems())); }
-            set { Set(ref _menuItems, value); }
+            get => _menuItems ?? (_menuItems = new ObservableCollection<NavigationItemModel>(GetMenuItems()));
+            set => Set(ref _menuItems, value);
         }
 
         private IShell Shell { get; set; }
@@ -51,36 +51,36 @@ namespace eShop.UWP.ViewModels
         private Contact _userContact = new Contact();
         public Contact UserContact
         {
-            get { return _userContact; }
-            set { Set(ref _userContact, value); }
+            get => _userContact;
+            set => Set(ref _userContact, value);
         }
 
         private object _selectedItem;
         public object SelectedItem
         {
-            get { return _selectedItem; }
-            set { SetSelectedItem(value, navigate: true); }
+            get => _selectedItem;
+            set => SetSelectedItem(value, navigate: true);
         }
 
         private string _query;
         public string Query
         {
-            get { return _query; }
-            set { Set(ref _query, value); }
+            get => _query;
+            set => Set(ref _query, value);
         }
 
         private bool _isDisabled = false;
         public bool IsDisabled
         {
-            get { return _isDisabled; }
-            set { Set(ref _isDisabled, value); }
+            get => _isDisabled;
+            set => Set(ref _isDisabled, value);
         }
 
         private double _disableOpacity = 1.0;
         public double DisableOpacity
         {
-            get { return _disableOpacity; }
-            set { Set(ref _disableOpacity, value); }
+            get => _disableOpacity;
+            set => Set(ref _disableOpacity, value);
         }
 
         public ICommand ItemSelectedCommand => new RelayCommand<ItemClickEventArgs>(OnItemSelected);

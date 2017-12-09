@@ -48,7 +48,7 @@ namespace eShop.SqlProvider
         {
             this.BeginInit();
             this.InitClass();
-            global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
+            var schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
             base.Tables.CollectionChanged += schemaChangedHandler;
             base.Relations.CollectionChanged += schemaChangedHandler;
             this.EndInit();
@@ -62,15 +62,15 @@ namespace eShop.SqlProvider
             if ((this.IsBinarySerialized(info, context) == true))
             {
                 this.InitVars(false);
-                global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler1 = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
+                var schemaChangedHandler1 = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
                 this.Tables.CollectionChanged += schemaChangedHandler1;
                 this.Relations.CollectionChanged += schemaChangedHandler1;
                 return;
             }
-            string strSchema = ((string)(info.GetValue("XmlSchema", typeof(string))));
+            var strSchema = ((string)(info.GetValue("XmlSchema", typeof(string))));
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema))
             {
-                global::System.Data.DataSet ds = new global::System.Data.DataSet();
+                var ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
                 if ((ds.Tables["CatalogBrands"] != null))
                 {
@@ -114,7 +114,7 @@ namespace eShop.SqlProvider
                 this.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
             }
             this.GetSerializationData(info, context);
-            global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
+            var schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
             base.Tables.CollectionChanged += schemaChangedHandler;
             this.Relations.CollectionChanged += schemaChangedHandler;
         }
@@ -254,7 +254,7 @@ namespace eShop.SqlProvider
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public override global::System.Data.DataSet Clone()
         {
-            CatalogDS cln = ((CatalogDS)(base.Clone()));
+            var cln = ((CatalogDS)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -281,7 +281,7 @@ namespace eShop.SqlProvider
             if ((this.DetermineSchemaSerializationMode(reader) == global::System.Data.SchemaSerializationMode.IncludeSchema))
             {
                 this.Reset();
-                global::System.Data.DataSet ds = new global::System.Data.DataSet();
+                var ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
                 if ((ds.Tables["CatalogBrands"] != null))
                 {
@@ -331,7 +331,7 @@ namespace eShop.SqlProvider
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         protected override global::System.Xml.Schema.XmlSchema GetSchemaSerializable()
         {
-            global::System.IO.MemoryStream stream = new global::System.IO.MemoryStream();
+            var stream = new global::System.IO.MemoryStream();
             this.WriteXmlSchema(new global::System.Xml.XmlTextWriter(stream, null));
             stream.Position = 0;
             return global::System.Xml.Schema.XmlSchema.Read(new global::System.Xml.XmlTextReader(stream), null);
@@ -494,23 +494,23 @@ namespace eShop.SqlProvider
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs)
         {
-            CatalogDS ds = new CatalogDS();
-            global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-            global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-            global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
+            var ds = new CatalogDS();
+            var type = new global::System.Xml.Schema.XmlSchemaComplexType();
+            var sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+            var any = new global::System.Xml.Schema.XmlSchemaAny();
             any.Namespace = ds.Namespace;
             sequence.Items.Add(any);
             type.Particle = sequence;
-            global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+            var dsSchema = ds.GetSchemaSerializable();
             if (xs.Contains(dsSchema.TargetNamespace))
             {
-                global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                var s1 = new global::System.IO.MemoryStream();
+                var s2 = new global::System.IO.MemoryStream();
                 try
                 {
                     global::System.Xml.Schema.XmlSchema schema = null;
                     dsSchema.Write(s1);
-                    for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
+                    for (var schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
                     {
                         schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                         s2.SetLength(0);
@@ -683,8 +683,8 @@ namespace eShop.SqlProvider
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public CatalogBrandsRow AddCatalogBrandsRow(int Id, string Name)
             {
-                CatalogBrandsRow rowCatalogBrandsRow = ((CatalogBrandsRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
+                var rowCatalogBrandsRow = ((CatalogBrandsRow)(this.NewRow()));
+                var columnValuesArray = new object[] {
                         Id,
                         Name};
                 rowCatalogBrandsRow.ItemArray = columnValuesArray;
@@ -704,7 +704,7 @@ namespace eShop.SqlProvider
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone()
             {
-                CatalogBrandsDataTable cln = ((CatalogBrandsDataTable)(base.Clone()));
+                var cln = ((CatalogBrandsDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -815,39 +815,39 @@ namespace eShop.SqlProvider
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
             {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                CatalogDS ds = new CatalogDS();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                var type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                var sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                var ds = new CatalogDS();
+                var any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
                 any1.MaxOccurs = decimal.MaxValue;
                 any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
                 sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                var any2 = new global::System.Xml.Schema.XmlSchemaAny();
                 any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
                 any2.MinOccurs = new decimal(1);
                 any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
                 sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                var attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute1.Name = "namespace";
                 attribute1.FixedValue = ds.Namespace;
                 type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                var attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "CatalogBrandsDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                var dsSchema = ds.GetSchemaSerializable();
                 if (xs.Contains(dsSchema.TargetNamespace))
                 {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    var s1 = new global::System.IO.MemoryStream();
+                    var s2 = new global::System.IO.MemoryStream();
                     try
                     {
                         global::System.Xml.Schema.XmlSchema schema = null;
                         dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
+                        for (var schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
                         {
                             schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                             s2.SetLength(0);
@@ -1000,8 +1000,8 @@ namespace eShop.SqlProvider
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public CatalogTypesRow AddCatalogTypesRow(int Id, string Name)
             {
-                CatalogTypesRow rowCatalogTypesRow = ((CatalogTypesRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
+                var rowCatalogTypesRow = ((CatalogTypesRow)(this.NewRow()));
+                var columnValuesArray = new object[] {
                         Id,
                         Name};
                 rowCatalogTypesRow.ItemArray = columnValuesArray;
@@ -1021,7 +1021,7 @@ namespace eShop.SqlProvider
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone()
             {
-                CatalogTypesDataTable cln = ((CatalogTypesDataTable)(base.Clone()));
+                var cln = ((CatalogTypesDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1132,39 +1132,39 @@ namespace eShop.SqlProvider
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
             {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                CatalogDS ds = new CatalogDS();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                var type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                var sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                var ds = new CatalogDS();
+                var any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
                 any1.MaxOccurs = decimal.MaxValue;
                 any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
                 sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                var any2 = new global::System.Xml.Schema.XmlSchemaAny();
                 any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
                 any2.MinOccurs = new decimal(1);
                 any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
                 sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                var attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute1.Name = "namespace";
                 attribute1.FixedValue = ds.Namespace;
                 type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                var attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "CatalogTypesDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                var dsSchema = ds.GetSchemaSerializable();
                 if (xs.Contains(dsSchema.TargetNamespace))
                 {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    var s1 = new global::System.IO.MemoryStream();
+                    var s2 = new global::System.IO.MemoryStream();
                     try
                     {
                         global::System.Xml.Schema.XmlSchema schema = null;
                         dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
+                        for (var schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
                         {
                             schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                             s2.SetLength(0);
@@ -1401,8 +1401,8 @@ namespace eShop.SqlProvider
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public CatalogItemsRow AddCatalogItemsRow(int Id, string Name, string Description, string PictureName, double Price, int CatalogTypeId, int CatalogBrandId, bool IsDisabled, System.DateTime LastUpdate)
             {
-                CatalogItemsRow rowCatalogItemsRow = ((CatalogItemsRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
+                var rowCatalogItemsRow = ((CatalogItemsRow)(this.NewRow()));
+                var columnValuesArray = new object[] {
                         Id,
                         Name,
                         Description,
@@ -1429,7 +1429,7 @@ namespace eShop.SqlProvider
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone()
             {
-                CatalogItemsDataTable cln = ((CatalogItemsDataTable)(base.Clone()));
+                var cln = ((CatalogItemsDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1568,39 +1568,39 @@ namespace eShop.SqlProvider
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
             {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                CatalogDS ds = new CatalogDS();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                var type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                var sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                var ds = new CatalogDS();
+                var any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
                 any1.MaxOccurs = decimal.MaxValue;
                 any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
                 sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                var any2 = new global::System.Xml.Schema.XmlSchemaAny();
                 any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
                 any2.MinOccurs = new decimal(1);
                 any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
                 sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                var attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute1.Name = "namespace";
                 attribute1.FixedValue = ds.Namespace;
                 type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                var attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "CatalogItemsDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                var dsSchema = ds.GetSchemaSerializable();
                 if (xs.Contains(dsSchema.TargetNamespace))
                 {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    var s1 = new global::System.IO.MemoryStream();
+                    var s2 = new global::System.IO.MemoryStream();
                     try
                     {
                         global::System.Xml.Schema.XmlSchema schema = null;
                         dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
+                        for (var schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
                         {
                             schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                             s2.SetLength(0);
@@ -1753,8 +1753,8 @@ namespace eShop.SqlProvider
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public CatalogPicturesRow AddCatalogPicturesRow(int Id, byte[] Picture)
             {
-                CatalogPicturesRow rowCatalogPicturesRow = ((CatalogPicturesRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
+                var rowCatalogPicturesRow = ((CatalogPicturesRow)(this.NewRow()));
+                var columnValuesArray = new object[] {
                         Id,
                         Picture};
                 rowCatalogPicturesRow.ItemArray = columnValuesArray;
@@ -1774,7 +1774,7 @@ namespace eShop.SqlProvider
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone()
             {
-                CatalogPicturesDataTable cln = ((CatalogPicturesDataTable)(base.Clone()));
+                var cln = ((CatalogPicturesDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1884,39 +1884,39 @@ namespace eShop.SqlProvider
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
             {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                CatalogDS ds = new CatalogDS();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                var type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                var sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                var ds = new CatalogDS();
+                var any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
                 any1.MaxOccurs = decimal.MaxValue;
                 any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
                 sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                var any2 = new global::System.Xml.Schema.XmlSchemaAny();
                 any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
                 any2.MinOccurs = new decimal(1);
                 any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
                 sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                var attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute1.Name = "namespace";
                 attribute1.FixedValue = ds.Namespace;
                 type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                var attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "CatalogPicturesDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                var dsSchema = ds.GetSchemaSerializable();
                 if (xs.Contains(dsSchema.TargetNamespace))
                 {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    var s1 = new global::System.IO.MemoryStream();
+                    var s2 = new global::System.IO.MemoryStream();
                     try
                     {
                         global::System.Xml.Schema.XmlSchema schema = null;
                         dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
+                        for (var schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
                         {
                             schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                             s2.SetLength(0);
@@ -2153,8 +2153,8 @@ namespace eShop.SqlProvider
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public CatalogItemRow AddCatalogItemRow(int Id, string Name, string Description, string PictureName, double Price, int CatalogTypeId, int CatalogBrandId, bool IsDisabled, System.DateTime LastUpdate)
             {
-                CatalogItemRow rowCatalogItemRow = ((CatalogItemRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
+                var rowCatalogItemRow = ((CatalogItemRow)(this.NewRow()));
+                var columnValuesArray = new object[] {
                         Id,
                         Name,
                         Description,
@@ -2181,7 +2181,7 @@ namespace eShop.SqlProvider
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone()
             {
-                CatalogItemDataTable cln = ((CatalogItemDataTable)(base.Clone()));
+                var cln = ((CatalogItemDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -2320,39 +2320,39 @@ namespace eShop.SqlProvider
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
             {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                CatalogDS ds = new CatalogDS();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                var type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                var sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                var ds = new CatalogDS();
+                var any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
                 any1.MaxOccurs = decimal.MaxValue;
                 any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
                 sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                var any2 = new global::System.Xml.Schema.XmlSchemaAny();
                 any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
                 any2.MinOccurs = new decimal(1);
                 any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
                 sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                var attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute1.Name = "namespace";
                 attribute1.FixedValue = ds.Namespace;
                 type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                var attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "CatalogItemDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                var dsSchema = ds.GetSchemaSerializable();
                 if (xs.Contains(dsSchema.TargetNamespace))
                 {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    var s1 = new global::System.IO.MemoryStream();
+                    var s2 = new global::System.IO.MemoryStream();
                     try
                     {
                         global::System.Xml.Schema.XmlSchema schema = null;
                         dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
+                        for (var schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
                         {
                             schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                             s2.SetLength(0);
@@ -2589,8 +2589,8 @@ namespace eShop.SqlProvider
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public CatalogItemsFilterRow AddCatalogItemsFilterRow(int Id, string Name, string Description, string PictureName, double Price, int CatalogTypeId, int CatalogBrandId, bool IsDisabled, System.DateTime LastUpdate)
             {
-                CatalogItemsFilterRow rowCatalogItemsFilterRow = ((CatalogItemsFilterRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
+                var rowCatalogItemsFilterRow = ((CatalogItemsFilterRow)(this.NewRow()));
+                var columnValuesArray = new object[] {
                         Id,
                         Name,
                         Description,
@@ -2617,7 +2617,7 @@ namespace eShop.SqlProvider
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone()
             {
-                CatalogItemsFilterDataTable cln = ((CatalogItemsFilterDataTable)(base.Clone()));
+                var cln = ((CatalogItemsFilterDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -2756,39 +2756,39 @@ namespace eShop.SqlProvider
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
             {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                CatalogDS ds = new CatalogDS();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                var type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                var sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                var ds = new CatalogDS();
+                var any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
                 any1.MaxOccurs = decimal.MaxValue;
                 any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
                 sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                var any2 = new global::System.Xml.Schema.XmlSchemaAny();
                 any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
                 any2.MinOccurs = new decimal(1);
                 any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
                 sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                var attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute1.Name = "namespace";
                 attribute1.FixedValue = ds.Namespace;
                 type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                var attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "CatalogItemsFilterDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                var dsSchema = ds.GetSchemaSerializable();
                 if (xs.Contains(dsSchema.TargetNamespace))
                 {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    var s1 = new global::System.IO.MemoryStream();
+                    var s2 = new global::System.IO.MemoryStream();
                     try
                     {
                         global::System.Xml.Schema.XmlSchema schema = null;
                         dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
+                        for (var schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
                         {
                             schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                             s2.SetLength(0);
@@ -2941,8 +2941,8 @@ namespace eShop.SqlProvider
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public CatalogPictureRow AddCatalogPictureRow(int Id, byte[] Picture)
             {
-                CatalogPictureRow rowCatalogPictureRow = ((CatalogPictureRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
+                var rowCatalogPictureRow = ((CatalogPictureRow)(this.NewRow()));
+                var columnValuesArray = new object[] {
                         Id,
                         Picture};
                 rowCatalogPictureRow.ItemArray = columnValuesArray;
@@ -2962,7 +2962,7 @@ namespace eShop.SqlProvider
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone()
             {
-                CatalogPictureDataTable cln = ((CatalogPictureDataTable)(base.Clone()));
+                var cln = ((CatalogPictureDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -3072,39 +3072,39 @@ namespace eShop.SqlProvider
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
             {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                CatalogDS ds = new CatalogDS();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                var type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                var sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                var ds = new CatalogDS();
+                var any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
                 any1.MaxOccurs = decimal.MaxValue;
                 any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
                 sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                var any2 = new global::System.Xml.Schema.XmlSchemaAny();
                 any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
                 any2.MinOccurs = new decimal(1);
                 any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
                 sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                var attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute1.Name = "namespace";
                 attribute1.FixedValue = ds.Namespace;
                 type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                var attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "CatalogPictureDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                var dsSchema = ds.GetSchemaSerializable();
                 if (xs.Contains(dsSchema.TargetNamespace))
                 {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    var s1 = new global::System.IO.MemoryStream();
+                    var s2 = new global::System.IO.MemoryStream();
                     try
                     {
                         global::System.Xml.Schema.XmlSchema schema = null;
                         dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
+                        for (var schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
                         {
                             schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                             s2.SetLength(0);
@@ -4379,7 +4379,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
                 {
                     this.Adapter.UpdateCommand.Connection = value;
                 }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1))
+                for (var i = 0; (i < this.CommandCollection.Length); i = (i + 1))
                 {
                     if ((this.CommandCollection[i] != null))
                     {
@@ -4400,7 +4400,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
             set
             {
                 this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1))
+                for (var i = 0; (i < this.CommandCollection.Length); i = (i + 1))
                 {
                     this.CommandCollection[i].Transaction = this._transaction;
                 }
@@ -4455,7 +4455,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
         private void InitAdapter()
         {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            var tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "CatalogBrands";
             tableMapping.ColumnMappings.Add("Id", "Id");
@@ -4513,7 +4513,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
             {
                 dataTable.Clear();
             }
-            int returnValue = this.Adapter.Fill(dataTable);
+            var returnValue = this.Adapter.Fill(dataTable);
             return returnValue;
         }
 
@@ -4524,7 +4524,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
         public virtual CatalogDS.CatalogBrandsDataTable GetData()
         {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            CatalogDS.CatalogBrandsDataTable dataTable = new CatalogDS.CatalogBrandsDataTable();
+            var dataTable = new CatalogDS.CatalogBrandsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4569,7 +4569,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
         public virtual int Delete(int Original_Id)
         {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            var previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open)
                         != global::System.Data.ConnectionState.Open))
             {
@@ -4577,7 +4577,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
             }
             try
             {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                var returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
                 return returnValue;
             }
             finally
@@ -4604,7 +4604,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
             {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Name));
             }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            var previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open)
                         != global::System.Data.ConnectionState.Open))
             {
@@ -4612,7 +4612,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
             }
             try
             {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                var returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
                 return returnValue;
             }
             finally
@@ -4640,7 +4640,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Name));
             }
             this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_Id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            var previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open)
                         != global::System.Data.ConnectionState.Open))
             {
@@ -4648,7 +4648,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
             }
             try
             {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                var returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
                 return returnValue;
             }
             finally
@@ -4740,7 +4740,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
                 {
                     this.Adapter.UpdateCommand.Connection = value;
                 }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1))
+                for (var i = 0; (i < this.CommandCollection.Length); i = (i + 1))
                 {
                     if ((this.CommandCollection[i] != null))
                     {
@@ -4761,7 +4761,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
             set
             {
                 this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1))
+                for (var i = 0; (i < this.CommandCollection.Length); i = (i + 1))
                 {
                     this.CommandCollection[i].Transaction = this._transaction;
                 }
@@ -4816,7 +4816,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
         private void InitAdapter()
         {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            var tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "CatalogTypes";
             tableMapping.ColumnMappings.Add("Id", "Id");
@@ -4874,7 +4874,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
             {
                 dataTable.Clear();
             }
-            int returnValue = this.Adapter.Fill(dataTable);
+            var returnValue = this.Adapter.Fill(dataTable);
             return returnValue;
         }
 
@@ -4885,7 +4885,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
         public virtual CatalogDS.CatalogTypesDataTable GetData()
         {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            CatalogDS.CatalogTypesDataTable dataTable = new CatalogDS.CatalogTypesDataTable();
+            var dataTable = new CatalogDS.CatalogTypesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4930,7 +4930,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
         public virtual int Delete(int Original_Id)
         {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            var previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open)
                         != global::System.Data.ConnectionState.Open))
             {
@@ -4938,7 +4938,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
             }
             try
             {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                var returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
                 return returnValue;
             }
             finally
@@ -4965,7 +4965,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
             {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Name));
             }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            var previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open)
                         != global::System.Data.ConnectionState.Open))
             {
@@ -4973,7 +4973,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
             }
             try
             {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                var returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
                 return returnValue;
             }
             finally
@@ -5001,7 +5001,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Name));
             }
             this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_Id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            var previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open)
                         != global::System.Data.ConnectionState.Open))
             {
@@ -5009,7 +5009,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
             }
             try
             {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                var returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
                 return returnValue;
             }
             finally
@@ -5101,7 +5101,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
                 {
                     this.Adapter.UpdateCommand.Connection = value;
                 }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1))
+                for (var i = 0; (i < this.CommandCollection.Length); i = (i + 1))
                 {
                     if ((this.CommandCollection[i] != null))
                     {
@@ -5122,7 +5122,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
             set
             {
                 this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1))
+                for (var i = 0; (i < this.CommandCollection.Length); i = (i + 1))
                 {
                     this.CommandCollection[i].Transaction = this._transaction;
                 }
@@ -5177,7 +5177,7 @@ namespace eShop.SqlProvider.CatalogDSTableAdapters
         private void InitAdapter()
         {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            var tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "CatalogItems";
             tableMapping.ColumnMappings.Add("Id", "Id");
@@ -5259,7 +5259,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             {
                 dataTable.Clear();
             }
-            int returnValue = this.Adapter.Fill(dataTable);
+            var returnValue = this.Adapter.Fill(dataTable);
             return returnValue;
         }
 
@@ -5270,7 +5270,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
         public virtual CatalogDS.CatalogItemsDataTable GetData()
         {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            CatalogDS.CatalogItemsDataTable dataTable = new CatalogDS.CatalogItemsDataTable();
+            var dataTable = new CatalogDS.CatalogItemsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5315,7 +5315,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
         public virtual int Delete(int Original_Id)
         {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            var previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open)
                         != global::System.Data.ConnectionState.Open))
             {
@@ -5323,7 +5323,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             }
             try
             {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                var returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
                 return returnValue;
             }
             finally
@@ -5371,7 +5371,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             this.Adapter.InsertCommand.Parameters[6].Value = ((int)(CatalogBrandId));
             this.Adapter.InsertCommand.Parameters[7].Value = ((bool)(IsDisabled));
             this.Adapter.InsertCommand.Parameters[8].Value = ((System.DateTime)(LastUpdate));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            var previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open)
                         != global::System.Data.ConnectionState.Open))
             {
@@ -5379,7 +5379,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             }
             try
             {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                var returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
                 return returnValue;
             }
             finally
@@ -5428,7 +5428,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             this.Adapter.UpdateCommand.Parameters[7].Value = ((bool)(IsDisabled));
             this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(LastUpdate));
             this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_Id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            var previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open)
                         != global::System.Data.ConnectionState.Open))
             {
@@ -5436,7 +5436,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             }
             try
             {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                var returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
                 return returnValue;
             }
             finally
@@ -5528,7 +5528,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
                 {
                     this.Adapter.UpdateCommand.Connection = value;
                 }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1))
+                for (var i = 0; (i < this.CommandCollection.Length); i = (i + 1))
                 {
                     if ((this.CommandCollection[i] != null))
                     {
@@ -5549,7 +5549,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             set
             {
                 this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1))
+                for (var i = 0; (i < this.CommandCollection.Length); i = (i + 1))
                 {
                     this.CommandCollection[i].Transaction = this._transaction;
                 }
@@ -5604,7 +5604,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
         private void InitAdapter()
         {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            var tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "CatalogPictures";
             tableMapping.ColumnMappings.Add("Id", "Id");
@@ -5662,7 +5662,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             {
                 dataTable.Clear();
             }
-            int returnValue = this.Adapter.Fill(dataTable);
+            var returnValue = this.Adapter.Fill(dataTable);
             return returnValue;
         }
 
@@ -5673,7 +5673,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
         public virtual CatalogDS.CatalogPicturesDataTable GetData()
         {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            CatalogDS.CatalogPicturesDataTable dataTable = new CatalogDS.CatalogPicturesDataTable();
+            var dataTable = new CatalogDS.CatalogPicturesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5718,7 +5718,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
         public virtual int Delete(int Original_Id)
         {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            var previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open)
                         != global::System.Data.ConnectionState.Open))
             {
@@ -5726,7 +5726,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             }
             try
             {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                var returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
                 return returnValue;
             }
             finally
@@ -5753,7 +5753,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((byte[])(Picture));
             }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            var previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open)
                         != global::System.Data.ConnectionState.Open))
             {
@@ -5761,7 +5761,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             }
             try
             {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                var returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
                 return returnValue;
             }
             finally
@@ -5789,7 +5789,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((byte[])(Picture));
             }
             this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_Id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            var previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open)
                         != global::System.Data.ConnectionState.Open))
             {
@@ -5797,7 +5797,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             }
             try
             {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                var returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
                 return returnValue;
             }
             finally
@@ -5889,7 +5889,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
                 {
                     this.Adapter.UpdateCommand.Connection = value;
                 }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1))
+                for (var i = 0; (i < this.CommandCollection.Length); i = (i + 1))
                 {
                     if ((this.CommandCollection[i] != null))
                     {
@@ -5910,7 +5910,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             set
             {
                 this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1))
+                for (var i = 0; (i < this.CommandCollection.Length); i = (i + 1))
                 {
                     this.CommandCollection[i].Transaction = this._transaction;
                 }
@@ -5965,7 +5965,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
         private void InitAdapter()
         {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            var tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "CatalogItem";
             tableMapping.ColumnMappings.Add("Id", "Id");
@@ -6013,7 +6013,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             {
                 dataTable.Clear();
             }
-            int returnValue = this.Adapter.Fill(dataTable);
+            var returnValue = this.Adapter.Fill(dataTable);
             return returnValue;
         }
 
@@ -6025,7 +6025,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
         {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Id));
-            CatalogDS.CatalogItemDataTable dataTable = new CatalogDS.CatalogItemDataTable();
+            var dataTable = new CatalogDS.CatalogItemDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6101,7 +6101,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
                 {
                     this.Adapter.UpdateCommand.Connection = value;
                 }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1))
+                for (var i = 0; (i < this.CommandCollection.Length); i = (i + 1))
                 {
                     if ((this.CommandCollection[i] != null))
                     {
@@ -6122,7 +6122,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             set
             {
                 this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1))
+                for (var i = 0; (i < this.CommandCollection.Length); i = (i + 1))
                 {
                     this.CommandCollection[i].Transaction = this._transaction;
                 }
@@ -6177,7 +6177,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
         private void InitAdapter()
         {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            var tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "CatalogItemsFilter";
             tableMapping.ColumnMappings.Add("Id", "Id");
@@ -6235,7 +6235,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             {
                 dataTable.Clear();
             }
-            int returnValue = this.Adapter.Fill(dataTable);
+            var returnValue = this.Adapter.Fill(dataTable);
             return returnValue;
         }
 
@@ -6256,7 +6256,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             {
                 this.Adapter.SelectCommand.Parameters[2].Value = ((string)(Query));
             }
-            CatalogDS.CatalogItemsFilterDataTable dataTable = new CatalogDS.CatalogItemsFilterDataTable();
+            var dataTable = new CatalogDS.CatalogItemsFilterDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6332,7 +6332,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
                 {
                     this.Adapter.UpdateCommand.Connection = value;
                 }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1))
+                for (var i = 0; (i < this.CommandCollection.Length); i = (i + 1))
                 {
                     if ((this.CommandCollection[i] != null))
                     {
@@ -6353,7 +6353,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             set
             {
                 this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1))
+                for (var i = 0; (i < this.CommandCollection.Length); i = (i + 1))
                 {
                     this.CommandCollection[i].Transaction = this._transaction;
                 }
@@ -6408,7 +6408,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
         private void InitAdapter()
         {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            var tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "CatalogPicture";
             tableMapping.ColumnMappings.Add("Id", "Id");
@@ -6448,7 +6448,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             {
                 dataTable.Clear();
             }
-            int returnValue = this.Adapter.Fill(dataTable);
+            var returnValue = this.Adapter.Fill(dataTable);
             return returnValue;
         }
 
@@ -6460,7 +6460,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
         {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Id));
-            CatalogDS.CatalogPictureDataTable dataTable = new CatalogDS.CatalogPictureDataTable();
+            var dataTable = new CatalogDS.CatalogPictureDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6633,7 +6633,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
         {
             get
             {
-                int count = 0;
+                var count = 0;
                 if ((this._catalogBrandsTableAdapter != null))
                 {
                     count = (count + 1);
@@ -6661,10 +6661,10 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateUpdatedRows(CatalogDS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows)
         {
-            int result = 0;
+            var result = 0;
             if ((this._catalogBrandsTableAdapter != null))
             {
-                global::System.Data.DataRow[] updatedRows = dataSet.CatalogBrands.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                var updatedRows = dataSet.CatalogBrands.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null)
                             && (0 < updatedRows.Length)))
@@ -6675,7 +6675,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             }
             if ((this._catalogTypesTableAdapter != null))
             {
-                global::System.Data.DataRow[] updatedRows = dataSet.CatalogTypes.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                var updatedRows = dataSet.CatalogTypes.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null)
                             && (0 < updatedRows.Length)))
@@ -6686,7 +6686,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             }
             if ((this._catalogItemsTableAdapter != null))
             {
-                global::System.Data.DataRow[] updatedRows = dataSet.CatalogItems.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                var updatedRows = dataSet.CatalogItems.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null)
                             && (0 < updatedRows.Length)))
@@ -6697,7 +6697,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             }
             if ((this._catalogPicturesTableAdapter != null))
             {
-                global::System.Data.DataRow[] updatedRows = dataSet.CatalogPictures.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                var updatedRows = dataSet.CatalogPictures.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null)
                             && (0 < updatedRows.Length)))
@@ -6716,10 +6716,10 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateInsertedRows(CatalogDS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows)
         {
-            int result = 0;
+            var result = 0;
             if ((this._catalogBrandsTableAdapter != null))
             {
-                global::System.Data.DataRow[] addedRows = dataSet.CatalogBrands.Select(null, null, global::System.Data.DataViewRowState.Added);
+                var addedRows = dataSet.CatalogBrands.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null)
                             && (0 < addedRows.Length)))
                 {
@@ -6729,7 +6729,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             }
             if ((this._catalogTypesTableAdapter != null))
             {
-                global::System.Data.DataRow[] addedRows = dataSet.CatalogTypes.Select(null, null, global::System.Data.DataViewRowState.Added);
+                var addedRows = dataSet.CatalogTypes.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null)
                             && (0 < addedRows.Length)))
                 {
@@ -6739,7 +6739,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             }
             if ((this._catalogItemsTableAdapter != null))
             {
-                global::System.Data.DataRow[] addedRows = dataSet.CatalogItems.Select(null, null, global::System.Data.DataViewRowState.Added);
+                var addedRows = dataSet.CatalogItems.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null)
                             && (0 < addedRows.Length)))
                 {
@@ -6749,7 +6749,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             }
             if ((this._catalogPicturesTableAdapter != null))
             {
-                global::System.Data.DataRow[] addedRows = dataSet.CatalogPictures.Select(null, null, global::System.Data.DataViewRowState.Added);
+                var addedRows = dataSet.CatalogPictures.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null)
                             && (0 < addedRows.Length)))
                 {
@@ -6767,10 +6767,10 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateDeletedRows(CatalogDS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows)
         {
-            int result = 0;
+            var result = 0;
             if ((this._catalogPicturesTableAdapter != null))
             {
-                global::System.Data.DataRow[] deletedRows = dataSet.CatalogPictures.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                var deletedRows = dataSet.CatalogPictures.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null)
                             && (0 < deletedRows.Length)))
                 {
@@ -6780,7 +6780,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             }
             if ((this._catalogItemsTableAdapter != null))
             {
-                global::System.Data.DataRow[] deletedRows = dataSet.CatalogItems.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                var deletedRows = dataSet.CatalogItems.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null)
                             && (0 < deletedRows.Length)))
                 {
@@ -6790,7 +6790,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             }
             if ((this._catalogTypesTableAdapter != null))
             {
-                global::System.Data.DataRow[] deletedRows = dataSet.CatalogTypes.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                var deletedRows = dataSet.CatalogTypes.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null)
                             && (0 < deletedRows.Length)))
                 {
@@ -6800,7 +6800,7 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             }
             if ((this._catalogBrandsTableAdapter != null))
             {
-                global::System.Data.DataRow[] deletedRows = dataSet.CatalogBrands.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                var deletedRows = dataSet.CatalogBrands.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null)
                             && (0 < deletedRows.Length)))
                 {
@@ -6828,10 +6828,10 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             {
                 return updatedRows;
             }
-            global::System.Collections.Generic.List<global::System.Data.DataRow> realUpdatedRows = new global::System.Collections.Generic.List<global::System.Data.DataRow>();
-            for (int i = 0; (i < updatedRows.Length); i = (i + 1))
+            var realUpdatedRows = new global::System.Collections.Generic.List<global::System.Data.DataRow>();
+            for (var i = 0; (i < updatedRows.Length); i = (i + 1))
             {
-                global::System.Data.DataRow row = updatedRows[i];
+                var row = updatedRows[i];
                 if ((allAddedRows.Contains(row) == false))
                 {
                     realUpdatedRows.Add(row);
@@ -6879,13 +6879,13 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            global::System.Data.IDbConnection workConnection = this.Connection;
+            var workConnection = this.Connection;
             if ((workConnection == null))
             {
                 throw new global::System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana" +
                         "ger TableAdapter property to a valid TableAdapter instance.");
             }
-            bool workConnOpened = false;
+            var workConnOpened = false;
             if (((workConnection.State & global::System.Data.ConnectionState.Broken)
                         == global::System.Data.ConnectionState.Broken))
             {
@@ -6896,17 +6896,17 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
                 workConnection.Open();
                 workConnOpened = true;
             }
-            global::System.Data.IDbTransaction workTransaction = workConnection.BeginTransaction();
+            var workTransaction = workConnection.BeginTransaction();
             if ((workTransaction == null))
             {
                 throw new global::System.ApplicationException("The transaction cannot begin. The current data connection does not support transa" +
                         "ctions or the current state is not allowing the transaction to begin.");
             }
-            global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows = new global::System.Collections.Generic.List<global::System.Data.DataRow>();
-            global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows = new global::System.Collections.Generic.List<global::System.Data.DataRow>();
-            global::System.Collections.Generic.List<global::System.Data.Common.DataAdapter> adaptersWithAcceptChangesDuringUpdate = new global::System.Collections.Generic.List<global::System.Data.Common.DataAdapter>();
-            global::System.Collections.Generic.Dictionary<object, global::System.Data.IDbConnection> revertConnections = new global::System.Collections.Generic.Dictionary<object, global::System.Data.IDbConnection>();
-            int result = 0;
+            var allChangedRows = new global::System.Collections.Generic.List<global::System.Data.DataRow>();
+            var allAddedRows = new global::System.Collections.Generic.List<global::System.Data.DataRow>();
+            var adaptersWithAcceptChangesDuringUpdate = new global::System.Collections.Generic.List<global::System.Data.Common.DataAdapter>();
+            var revertConnections = new global::System.Collections.Generic.Dictionary<object, global::System.Data.IDbConnection>();
+            var result = 0;
             global::System.Data.DataSet backupDataSet = null;
             if (this.BackupDataSetBeforeUpdate)
             {
@@ -6981,21 +6981,21 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
                 workTransaction.Commit();
                 if ((0 < allAddedRows.Count))
                 {
-                    global::System.Data.DataRow[] rows = new System.Data.DataRow[allAddedRows.Count];
+                    var rows = new System.Data.DataRow[allAddedRows.Count];
                     allAddedRows.CopyTo(rows);
-                    for (int i = 0; (i < rows.Length); i = (i + 1))
+                    for (var i = 0; (i < rows.Length); i = (i + 1))
                     {
-                        global::System.Data.DataRow row = rows[i];
+                        var row = rows[i];
                         row.AcceptChanges();
                     }
                 }
                 if ((0 < allChangedRows.Count))
                 {
-                    global::System.Data.DataRow[] rows = new System.Data.DataRow[allChangedRows.Count];
+                    var rows = new System.Data.DataRow[allChangedRows.Count];
                     allChangedRows.CopyTo(rows);
-                    for (int i = 0; (i < rows.Length); i = (i + 1))
+                    for (var i = 0; (i < rows.Length); i = (i + 1))
                     {
-                        global::System.Data.DataRow row = rows[i];
+                        var row = rows[i];
                         row.AcceptChanges();
                     }
                 }
@@ -7014,11 +7014,11 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
                 {
                     if ((0 < allAddedRows.Count))
                     {
-                        global::System.Data.DataRow[] rows = new System.Data.DataRow[allAddedRows.Count];
+                        var rows = new System.Data.DataRow[allAddedRows.Count];
                         allAddedRows.CopyTo(rows);
-                        for (int i = 0; (i < rows.Length); i = (i + 1))
+                        for (var i = 0; (i < rows.Length); i = (i + 1))
                         {
-                            global::System.Data.DataRow row = rows[i];
+                            var row = rows[i];
                             row.AcceptChanges();
                             row.SetAdded();
                         }
@@ -7054,11 +7054,11 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count))
                 {
-                    global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
+                    var adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
                     adaptersWithAcceptChangesDuringUpdate.CopyTo(adapters);
-                    for (int i = 0; (i < adapters.Length); i = (i + 1))
+                    for (var i = 0; (i < adapters.Length); i = (i + 1))
                     {
-                        global::System.Data.Common.DataAdapter adapter = adapters[i];
+                        var adapter = adapters[i];
                         adapter.AcceptChangesDuringUpdate = true;
                     }
                 }
@@ -7136,13 +7136,13 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
             private global::System.Data.DataRow GetRoot(global::System.Data.DataRow row, out int distance)
             {
                 global::System.Diagnostics.Debug.Assert((row != null));
-                global::System.Data.DataRow root = row;
+                var root = row;
                 distance = 0;
 
                 global::System.Collections.Generic.IDictionary<global::System.Data.DataRow, global::System.Data.DataRow> traversedRows = new global::System.Collections.Generic.Dictionary<global::System.Data.DataRow, global::System.Data.DataRow>();
                 traversedRows[row] = row;
 
-                global::System.Data.DataRow parent = row.GetParentRow(this._relation, global::System.Data.DataRowVersion.Default);
+                var parent = row.GetParentRow(this._relation, global::System.Data.DataRowVersion.Default);
                 for (
                 ; ((parent != null)
                             && (traversedRows.ContainsKey(parent) == false));
@@ -7191,11 +7191,11 @@ SELECT Id, Name, Description, PictureName, Price, CatalogTypeId, CatalogBrandId,
                     return 1;
                 }
 
-                int distance1 = 0;
-                global::System.Data.DataRow root1 = this.GetRoot(row1, out distance1);
+                var distance1 = 0;
+                var root1 = this.GetRoot(row1, out distance1);
 
-                int distance2 = 0;
-                global::System.Data.DataRow root2 = this.GetRoot(row2, out distance2);
+                var distance2 = 0;
+                var root2 = this.GetRoot(row2, out distance2);
 
                 if (object.ReferenceEquals(root1, root2))
                 {

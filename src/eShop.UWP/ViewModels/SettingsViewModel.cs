@@ -34,36 +34,36 @@ namespace eShop.UWP.ViewModels
         private bool _isLocalProvider;
         public bool IsLocalProvider
         {
-            get { return _isLocalProvider; }
-            set { Set(ref _isLocalProvider, value); }
+            get => _isLocalProvider;
+            set => Set(ref _isLocalProvider, value);
         }
 
         private bool _isRESTProvider;
         public bool IsRESTProvider
         {
-            get { return _isRESTProvider; }
-            set { Set(ref _isRESTProvider, value); }
+            get => _isRESTProvider;
+            set => Set(ref _isRESTProvider, value);
         }
 
         private bool _isSqlProvider;
         public bool IsSqlProvider
         {
-            get { return _isSqlProvider; }
-            set { Set(ref _isSqlProvider, value); }
+            get => _isSqlProvider;
+            set => Set(ref _isSqlProvider, value);
         }
 
         private string _serviceUrl;
         public string ServiceUrl
         {
-            get { return _serviceUrl; }
-            set { Set(ref _serviceUrl, value); }
+            get => _serviceUrl;
+            set => Set(ref _serviceUrl, value);
         }
 
         private string _sqlConnectionString;
         public string SqlConnectionString
         {
-            get { return _sqlConnectionString; }
-            set { Set(ref _sqlConnectionString, value); }
+            get => _sqlConnectionString;
+            set => Set(ref _sqlConnectionString, value);
         }
 
         public Visibility CancelVisibility => NavigationService.CanGoBack ? Visibility.Visible : Visibility.Collapsed;
@@ -73,14 +73,14 @@ namespace eShop.UWP.ViewModels
         private bool _isRESTBusy = false;
         public bool IsRESTBusy
         {
-            get { return _isRESTBusy; }
+            get => _isRESTBusy;
             set { Set(ref _isRESTBusy, value); RaisePropertyChanged("IsBusy"); }
         }
 
         private bool _isSqlBusy = false;
         public bool IsSqlBusy
         {
-            get { return _isSqlBusy; }
+            get => _isSqlBusy;
             set { Set(ref _isSqlBusy, value); RaisePropertyChanged("IsBusy"); }
         }
 

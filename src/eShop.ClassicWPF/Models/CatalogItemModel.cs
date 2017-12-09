@@ -20,13 +20,13 @@ namespace eShop.Models
 
         public CatalogItem Source { get; private set; }
 
-        public int Id { get => Source.Id; }
+        public int Id => Source.Id;
 
         #region Name
         public string Name
         {
-            get { return (string)GetValue(NameProperty); }
-            set { SetValue(NameProperty, value); }
+            get => (string)GetValue(NameProperty);
+            set => SetValue(NameProperty, value);
         }
 
         public static readonly DependencyProperty NameProperty = DependencyProperty.Register("Name", typeof(string), typeof(CatalogItemModel), new PropertyMetadata(null));
@@ -35,8 +35,8 @@ namespace eShop.Models
         #region Description
         public string Description
         {
-            get { return (string)GetValue(DescriptionProperty); }
-            set { SetValue(DescriptionProperty, value); }
+            get => (string)GetValue(DescriptionProperty);
+            set => SetValue(DescriptionProperty, value);
         }
 
         public static readonly DependencyProperty DescriptionProperty = DependencyProperty.Register("Description", typeof(string), typeof(CatalogItemModel), new PropertyMetadata(null));
@@ -45,8 +45,8 @@ namespace eShop.Models
         #region Price
         public double Price
         {
-            get { return (double)GetValue(PriceProperty); }
-            set { SetValue(PriceProperty, value); }
+            get => (double)GetValue(PriceProperty);
+            set => SetValue(PriceProperty, value);
         }
 
         public static readonly DependencyProperty PriceProperty = DependencyProperty.Register("Price", typeof(double), typeof(CatalogItemModel), new PropertyMetadata(null));
@@ -56,8 +56,8 @@ namespace eShop.Models
 
         public string PriceString
         {
-            get { return Price.ToString("0.00"); }
-            set { Price = ParseDecimal(value); }
+            get => Price.ToString("0.00");
+            set => Price = ParseDecimal(value);
         }
 
         private double ParseDecimal(string value)
@@ -74,8 +74,8 @@ namespace eShop.Models
         #region PictureUri
         public string PictureUri
         {
-            get { return (string)GetValue(PictureUriProperty); }
-            set { SetValue(PictureUriProperty, value); }
+            get => (string)GetValue(PictureUriProperty);
+            set => SetValue(PictureUriProperty, value);
         }
 
         public static readonly DependencyProperty PictureUriProperty = DependencyProperty.Register("PictureUri", typeof(string), typeof(CatalogItemModel), new PropertyMetadata(null));
@@ -87,8 +87,8 @@ namespace eShop.Models
         #region IsDisabled
         public bool IsDisabled
         {
-            get { return (bool)GetValue(IsDisabledProperty); }
-            set { SetValue(IsDisabledProperty, value); }
+            get => (bool)GetValue(IsDisabledProperty);
+            set => SetValue(IsDisabledProperty, value);
         }
 
         public static readonly DependencyProperty IsDisabledProperty = DependencyProperty.Register("IsDisabled", typeof(bool), typeof(CatalogItemModel), new PropertyMetadata(false));
@@ -101,8 +101,8 @@ namespace eShop.Models
         #region IsNew
         public bool IsNew
         {
-            get { return (bool)GetValue(IsNewProperty); }
-            set { SetValue(IsNewProperty, value); }
+            get => (bool)GetValue(IsNewProperty);
+            set => SetValue(IsNewProperty, value);
         }
 
         public static readonly DependencyProperty IsNewProperty = DependencyProperty.Register("IsNew", typeof(bool), typeof(CatalogItemModel), new PropertyMetadata(null));
@@ -111,27 +111,20 @@ namespace eShop.Models
         #region IsDeleted
         public bool IsDeleted
         {
-            get { return (bool)GetValue(IsDeletedProperty); }
-            set { SetValue(IsDeletedProperty, value); }
+            get => (bool)GetValue(IsDeletedProperty);
+            set => SetValue(IsDeletedProperty, value);
         }
 
         public static readonly DependencyProperty IsDeletedProperty = DependencyProperty.Register("IsDeleted", typeof(bool), typeof(CatalogItemModel), new PropertyMetadata(null));
         #endregion
 
-        public bool HasChanges
-        {
-            get
-            {
-                return
-                    Source.Name != Name ||
-                    Source.Description != Description ||
-                    Source.Price != Price ||
-                    Source.PictureUri != PictureUri ||
-                    Source.CatalogTypeId != CatalogType.Id ||
-                    Source.CatalogBrandId != CatalogBrand.Id ||
-                    Source.IsDisabled != IsDisabled;
-            }
-        }
+        public bool HasChanges => Source.Name != Name ||
+                                  Source.Description != Description ||
+                                  Source.Price != Price ||
+                                  Source.PictureUri != PictureUri ||
+                                  Source.CatalogTypeId != CatalogType.Id ||
+                                  Source.CatalogBrandId != CatalogBrand.Id ||
+                                  Source.IsDisabled != IsDisabled;
 
         public void Undo()
         {

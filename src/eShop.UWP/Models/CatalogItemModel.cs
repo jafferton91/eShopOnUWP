@@ -20,26 +20,26 @@ namespace eShop.UWP.Models
 
         public CatalogItem Source { get; private set; }
 
-        public int Id { get => Source.Id; }
+        public int Id => Source.Id;
 
         private string _name;
         public string Name
         {
-            get { return _name; }
-            set { Set(ref _name, value); }
+            get => _name;
+            set => Set(ref _name, value);
         }
 
         private string _description;
         public string Description
         {
-            get { return _description; }
-            set { Set(ref _description, value); }
+            get => _description;
+            set => Set(ref _description, value);
         }
 
         private double _price;
         public double Price
         {
-            get { return _price; }
+            get => _price;
             set { Set(ref _price, value); RaisePropertyChanged("PriceDesc"); }
         }
 
@@ -47,8 +47,8 @@ namespace eShop.UWP.Models
 
         public string PriceString
         {
-            get { return Price.ToString("0.00"); }
-            set { Price = ParseDecimal(value); }
+            get => Price.ToString("0.00");
+            set => Price = ParseDecimal(value);
         }
 
         private double ParseDecimal(string value)
@@ -65,29 +65,29 @@ namespace eShop.UWP.Models
         private string _pictureUri;
         public string PictureUri
         {
-            get { return _pictureUri; }
-            set { Set(ref _pictureUri, value); }
+            get => _pictureUri;
+            set => Set(ref _pictureUri, value);
         }
 
         private CatalogTypeModel _catalogType;
         public CatalogTypeModel CatalogType
         {
-            get { return _catalogType; }
-            set { Set(ref _catalogType, value); }
+            get => _catalogType;
+            set => Set(ref _catalogType, value);
         }
 
         private CatalogBrandModel _catalogBrand;
         public CatalogBrandModel CatalogBrand
         {
-            get { return _catalogBrand; }
-            set { Set(ref _catalogBrand, value); }
+            get => _catalogBrand;
+            set => Set(ref _catalogBrand, value);
         }
 
         private bool _isDisabled;
         public bool IsDisabled
         {
-            get { return _isDisabled; }
-            set { Set(ref _isDisabled, value); }
+            get => _isDisabled;
+            set => Set(ref _isDisabled, value);
         }
 
         // Management Properties
@@ -97,31 +97,24 @@ namespace eShop.UWP.Models
         private bool _isNew = false;
         public bool IsNew
         {
-            get { return _isNew; }
-            set { Set(ref _isNew, value); }
+            get => _isNew;
+            set => Set(ref _isNew, value);
         }
 
         private bool _isDeleted = false;
         public bool IsDeleted
         {
-            get { return _isDeleted; }
-            set { Set(ref _isDeleted, value); }
+            get => _isDeleted;
+            set => Set(ref _isDeleted, value);
         }
 
-        public bool HasChanges
-        {
-            get
-            {
-                return
-                    Source.Name != Name ||
-                    Source.Description != Description ||
-                    Source.Price != Price ||
-                    Source.PictureUri != PictureUri ||
-                    Source.CatalogTypeId != CatalogType.Id ||
-                    Source.CatalogBrandId != CatalogBrand.Id ||
-                    Source.IsDisabled != IsDisabled;
-            }
-        }
+        public bool HasChanges => Source.Name != Name ||
+                                  Source.Description != Description ||
+                                  Source.Price != Price ||
+                                  Source.PictureUri != PictureUri ||
+                                  Source.CatalogTypeId != CatalogType.Id ||
+                                  Source.CatalogBrandId != CatalogBrand.Id ||
+                                  Source.IsDisabled != IsDisabled;
 
         public void Undo()
         {
